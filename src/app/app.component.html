@@ -1,0 +1,33 @@
+<div class="container">
+  <header>
+    <nav class="navbar navbar-inverse" style="border-radius: 0px">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand">Bucketlist</a>
+      </div>
+    </nav>
+  </header>
+
+    <div class="row">
+    <div class="col-md-4">
+      <ul class="list-group users_list">
+        <li class="list-group-item" *ngFor="let user of users"
+        (click)="selectUser(user)"
+        [class.active]="user === activeUser">{{ user.id }}. {{ user.name }} [{{ user.username }}]</li>
+      </ul>
+      <app-user-form (userCreated)="onUserCreated($event)"></app-user-form>
+    </div>
+    <div class="col-md-8">
+      <app-user-profile [user]="activeUser"></app-user-profile>
+      <div class="jumbotron" *ngIf="!activeUser">
+        <h2 class="glyphicon glyphicon-hand-left"></h2>
+        <h4>Select a User</h4>
+      </div>
+    </div>
+</div>
+
+
+
+<footer class="text-center">
+  Copyright &copy; 2044
+</footer>
+</div>
